@@ -61,12 +61,16 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   flex-direction: column;
   gap: 2px;
 }
-.cy-logo-img {
+.cy-logo-mask {
   display: block;
   width: 200px;
-  height: auto;
-  object-fit: contain;
+  height: 66px;
+  background-color: var(--cy-orange);
+  -webkit-mask: url(assets/cup-logo.png) no-repeat left center / contain;
+  mask: url(assets/cup-logo.png) no-repeat left center / contain;
+  transition: background-color 0.3s;
 }
+.cy-logo-wrap:hover .cy-logo-mask { background-color: var(--cy-orange-deep); }
 .cy-nav {
   display: flex;
   align-items: center;

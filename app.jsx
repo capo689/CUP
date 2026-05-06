@@ -70,7 +70,7 @@ function Header({ tweaks, onOpenMega, megaOpen, megaSection, setMegaSection }) {
     <header className="cy-header">
       <div className="cy-header-inner">
         <a href="#top" className="cy-logo-wrap" aria-label="Cuppa Yo home">
-          <img src="assets/cup-logo.png" alt="Cuppa Yo" className="cy-logo-img" />
+          <span className="cy-logo-mask" aria-hidden="true" />
         </a>
         <nav className="cy-nav">
           {["Flavors", "Toppings", "Catering", "Locations", "Yomies"].map(item => (
@@ -835,7 +835,7 @@ function Footer() {
     <footer className="cy-foot">
       <div className="cy-foot-main">
         <div className="cy-foot-brand">
-          <img src="assets/cup-logo.png" alt="Cuppa Yo" className="cy-foot-logo" />
+          <img src="assets/cup-logo.png" alt="Cuppa Yo" className="cy-foot-logo" style={{filter: "brightness(0) invert(1)"}} />
           <p className="cy-foot-tag">Self-serve frozen yogurt, born in Bend, Oregon since 2014.</p>
           <div className="cy-foot-social">
             <a href="https://www.instagram.com/cuppayobend/" target="_blank" rel="noreferrer" aria-label="Instagram">
