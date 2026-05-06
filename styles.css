@@ -61,18 +61,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   flex-direction: column;
   gap: 2px;
 }
-.cy-logo-mask {
+.cy-logo-img {
   display: block;
-  width: 180px;
-  height: 56px;
-  background-color: var(--cy-orange);
-  -webkit-mask: url(assets/cuppayo-logo.png) no-repeat left center / contain;
-  mask: url(assets/cuppayo-logo.png) no-repeat left center / contain;
-  transition: background-color 0.3s;
-}
-.cy-logo-wrap:hover .cy-logo-mask { background-color: var(--cy-orange-deep); }
-.cy-logo-tag {
-  display: none;
+  width: 200px;
+  height: auto;
+  object-fit: contain;
 }
 .cy-nav {
   display: flex;
