@@ -66,35 +66,80 @@ const LOCATIONS = [
 
 // ---------- HEADER + MEGA NAV ----------
 function Header({ tweaks, onOpenMega, megaOpen, megaSection, setMegaSection }) {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const NAV_LINKS = [
+    { label: "Flavors", href: "#flavors" },
+    { label: "Toppings", href: "#toppings" },
+    { label: "Catering", href: "#catering" },
+    { label: "Locations", href: "#locations" },
+    { label: "Yomies", href: "#yomies" },
+  ];
+
+  // Lock body scroll when mobile nav is open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
+
+  const closeMenu = () => setMobileOpen(false);
+
   return (
-    <header className="cy-header">
-      <div className="cy-header-inner">
-        <a href="#top" className="cy-logo-wrap" aria-label="Cuppa Yo home">
-          <span className="cy-logo-mask" aria-hidden="true" />
-        </a>
-        <nav className="cy-nav">
-          {["Flavors", "Toppings", "Catering", "Locations", "Yomies"].map(item => (
-            <button
-              key={item}
-              className={`cy-nav-item ${megaOpen && megaSection === item ? "is-active" : ""}`}
-              onMouseEnter={() => onOpenMega(item)}
-              onClick={() => onOpenMega(item)}
-            >
-              {item}
-              <span className="cy-nav-underline" />
+    <>
+      <header className="cy-header">
+        <div className="cy-header-inner">
+          <a href="#top" className="cy-logo-wrap" aria-label="Cuppa Yo home" onClick={closeMenu}>
+            <span className="cy-logo-mask" aria-hidden="true" />
+          </a>
+          <nav className="cy-nav">
+            {["Flavors", "Toppings", "Catering", "Locations", "Yomies"].map(item => (
+              <button
+                key={item}
+                className={`cy-nav-item ${megaOpen && megaSection === item ? "is-active" : ""}`}
+                onMouseEnter={() => onOpenMega(item)}
+                onClick={() => onOpenMega(item)}
+              >
+                {item}
+                <span className="cy-nav-underline" />
+              </button>
+            ))}
+            <span className="cy-nav-divider" />
+            <button className="cy-nav-item cy-nav-secondary" onMouseEnter={() => onOpenMega("Franchise")}>
+              Franchise
             </button>
+          </nav>
+          <div className="cy-header-right">
+            <a className="cy-pill cy-pill-ghost" href="#locations">Find a store</a>
+            <a className="cy-pill cy-pill-solid" href="#yomies">Join Yomies</a>
+            <button
+              className={`cy-hamburger ${mobileOpen ? "is-open" : ""}`}
+              onClick={() => setMobileOpen(o => !o)}
+              aria-label="Toggle menu"
+              aria-expanded={mobileOpen}
+            >
+              <span /><span /><span />
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile nav overlay */}
+      <div className={`cy-mobile-nav ${mobileOpen ? "is-open" : ""}`} aria-hidden={!mobileOpen}>
+        <nav className="cy-mobile-nav-links">
+          {NAV_LINKS.map(({ label, href }) => (
+            <a key={label} href={href} className="cy-mobile-nav-link" onClick={closeMenu}>
+              {label}
+            </a>
           ))}
-          <span className="cy-nav-divider" />
-          <button className="cy-nav-item cy-nav-secondary" onMouseEnter={() => onOpenMega("Franchise")}>
+          <a href="#" className="cy-mobile-nav-link cy-mobile-nav-secondary" onClick={closeMenu}>
             Franchise
-          </button>
+          </a>
         </nav>
-        <div className="cy-header-right">
-          <a className="cy-pill cy-pill-ghost" href="#locations">Find a store</a>
-          <a className="cy-pill cy-pill-solid" href="#yomies">Join Yomies</a>
+        <div className="cy-mobile-nav-footer">
+          <a className="cy-cta cy-cta-primary" href="#locations" onClick={closeMenu}>Find a store →</a>
+          <a className="cy-cta cy-cta-ghost" href="#yomies" onClick={closeMenu} style={{color:"white",borderColor:"white"}}>Join Yomies</a>
         </div>
       </div>
-    </header>
+    </>
   );
 }
 
