@@ -366,22 +366,15 @@ function EditorialHero({ tweaks }) {
 
         <div className="cy-hero-visual">
           <div className="cy-hv-main">
-            <img src="assets/cup-orange.png" alt="Cuppa Yo cup with toppings" />
-            <div className="cy-hv-tag cy-hv-tag-1">
-              <span className="cy-hv-tag-dot" style={{background: "#E94B8A"}} />
-              <div>
-                <div className="cy-hv-tag-name">Strawberry</div>
-                <div className="cy-hv-tag-meta">Tart base</div>
-              </div>
+            {/* Toppings bar photo fills the top */}
+            <div className="cy-hv-toppings-zone">
+              <img src="assets/toppings-bar.png" alt="" />
+              <div className="cy-hv-toppings-fade" />
             </div>
-            <div className="cy-hv-tag cy-hv-tag-2">
-              <span className="cy-hv-tag-emoji">🍫</span>
-              <div>
-                <div className="cy-hv-tag-name">M&M's</div>
-                <div className="cy-hv-tag-meta">+ rainbow sprinkles</div>
-              </div>
-            </div>
-            <div className="cy-hv-tag cy-hv-tag-3">
+            {/* Cup emerges from the bottom */}
+            <img src="assets/cup-orange.png" alt="Cuppa Yo cup with toppings" className="cy-hv-cup" />
+            {/* Price tag pinned bottom-left */}
+            <div className="cy-hv-tag cy-hv-price-tag">
               <span className="cy-hv-tag-emoji">⚖️</span>
               <div>
                 <div className="cy-hv-tag-name">$0.55 / oz</div>
